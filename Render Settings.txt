@@ -1,0 +1,3 @@
+%%manim -t --format=mov #transparente mov
+
+%%manim -qk #4k60p
