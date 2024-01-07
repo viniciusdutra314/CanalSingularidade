@@ -1,0 +1,1 @@
+manim -qm file.py --renderer=opengl --write_to_movie 
