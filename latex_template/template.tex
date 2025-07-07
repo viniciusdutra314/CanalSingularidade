@@ -1,0 +1,135 @@
+\documentclass{article}
+\usepackage[a4paper, top=3cm, bottom=2cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath}
+\usepackage{blindtext}
+\usepackage{datetime}
+\usepackage{csvsimple}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx} 
+\usepackage{minted}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{indentfirst}
+\usepackage{fancyhdr}  
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{hyperref}
+
+\newcommand{\annotationbox}[3]{
+    \definecolor{currentcol}{named}{#3} 
+    \begin{tcolorbox}[colback=currentcol!5!white, colframe=currentcol!75!black, title={#1}]
+        {#2}
+    \end{tcolorbox}
+}
+
+
+
+
+\newcommand{\coded}[5]{
+    \definecolor{Gray}{gray}{0.9}
+    \begin{minipage}{\textwidth}
+        \captionof{listing}{{#5}}
+        \inputminted[
+            frame=lines,
+            framesep=2mm,
+            baselinestretch=1.2,
+            firstline={#3},
+            lastline={#4},
+            bgcolor=Gray,
+            linenos]{#1}{#2}
+    \end{minipage}
+    %#1: The programming language of the code snippet (e.g., python, java, c++, etc.).
+    %2: The filename of the code file to be included.
+    %3: The first line number of the code snippet to be included.
+    %4: The last line number of the code snippet to be included.
+    %5: The caption to be displayed above the code snippet
+}
+
+
+\newcommand{\csvtable}[3][]{%
+  \begin{table}[H]
+    \centering
+    \csvautotabular{#2}
+    \caption{#3}
+    \IfNoValueF{#1}{\label{tab:#1}}
+  \end{table}%
+}
+%uniform ref
+\newcommand{\figref}[1]{figure \ref{#1}}
+\newcommand{\tabref}[1]{table \ref{#1}}
+\newcommand{\eqnref}[1]{equation (\ref{#1})}
+
+\newcommand{\theauthor}{Vinícius Sousa Dutra}
+
+\newcommand{\addimage}[3][100mm]{
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width={#1}mm]{{#2}}
+        \caption{{#3}}
+    \end{figure}    
+    %% 1 - width
+    %% 2 - path
+    %% 3 - caption
+}   
+
+
+
+\pagestyle{fancy}  
+\fancyhf{}  
+\rhead{\theauthor} 
+\lhead{Video title}  
+\cfoot{\thepage} 
+
+
+
+
+
+\begin{document}
+	
+	
+\begin{titlepage}
+	\begin{center}
+		\begin{figure}[htb!]
+			\centering
+			\includegraphics[width=100mm]{images/singularity_logo.png}
+		\end{figure}
+		\vspace{20pt}
+		\LARGE{Made by \textbf{Singularity }\\
+		(Written format)}\\
+		
+		\vspace{150pt}
+		
+		
+		
+		\LARGE video \\
+		title
+		
+		
+		
+		\vspace{30pt}
+		\vspace{\fill}  
+		\Large {\today}
+		
+	\end{center}
+\end{titlepage}
+	
+	
+	
+	
+\newpage
+\tableofcontents
+\listoffigures
+\listoftables
+\listoflistings
+\newpage
+\section{Introduction}
+let's cite something \cite{wolf2011introduction}
+
+
+\bibliography{bibliography/references.bib}
+\bibliographystyle{abbrv}
+
+\end{document}
